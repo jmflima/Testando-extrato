@@ -1,6 +1,6 @@
 <?php
-
 use Psr\Http\Message\ServerRequestInterface;
+	
 	
 $app
 	->get('/statements', function(ServerRequestInterface $request) use($app){
@@ -10,12 +10,12 @@ $app
 		$data = $request->getQueryParams();
 		
 		$dateStart = $data['date_start'] ?? (new \DateTime())->modify('-1 month');
-		$dateStart = $dateStart instanceof \dateTime ? $dateStart->format('Y-m-d')
-			: \DateTime::creatFromFormat('d/m/Y', $dateStart)->format('Y-m-d');
+		$dateStart = $dateStart instanceof \DateTime ? $dateStart->format('Y-m-d')
+			: \DateTime::createFromFormat('d/m/Y', $dateStart)->format('Y-m-d');
 		
 		$dateEnd = $data['date_end'] ?? new \DateTime();
 		$dateEnd = $dateEnd instanceof \dateTime ? $dateEnd->format('Y-m-d')
-			: \DateTime::creatFromFormat('d/m/Y', $dateEnd)->format('Y-m-d');
+			: \DateTime::createFromFormat('d/m/Y', $dateEnd)->format('Y-m-d');
 
 /*		print_r($dateStart);
 		print_r($dateEnd);

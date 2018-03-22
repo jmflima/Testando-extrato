@@ -2,9 +2,9 @@
 declare(strict_types=1);
 namespace SONFin\Repository;
 
-Interface StatementRepositoryInterface
+interface StatementRepositoryInterface
 {
-	public function all(string $dateStart, $dateEnd, int $userId): array;
+	public function all(string $dateStart, string $dateEnd, int $userId): array;
 	
 		
 }

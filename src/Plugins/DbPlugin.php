@@ -3,12 +3,15 @@ declare(strict_types=1);
 
 namespace SONFin\Plugins;
 
+
 use Interop\Container\ContainerInterface;
-use SONFin\Models\User;
-use SONFin\Models\CategoryCost;
-use SONFin\Models\BillReceive;
 use SONFin\Models\BillPay;
+use SONFin\Models\BillReceive;
+use SONFin\Models\CategoryCost;
+use SONFin\Models\User;
+use SONFin\Repository\CategoryCostRepository;
 use SONFin\Repository\RepositoryFactory;
+use SONFin\Repository\StatementRepository;
 use SONFin\ServiceContainerInterface;
 use Illuminate\Database\Capsule\Manager as Capsule;
 
@@ -24,7 +27,7 @@ class DbPlugin implements PluginInterface
 		
 		$container->add('repository.factory', new RepositoryFactory());
 		$container->addLazy('category-cost.repository', function(){
-			return new CategoryCost();
+			return new CategoryCostRepository();
 		});
 					
 		$container->addLazy('bill-receive.repository', 
