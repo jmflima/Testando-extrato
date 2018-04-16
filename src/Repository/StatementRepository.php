@@ -36,5 +36,5 @@ class StatementRepository implements StatementRepositoryInterface
             'total_pays' => $billPays->sum('value'),
             'total_receives' => $billReceives->sum('value')
         ];
-    }			
+    }            
 }

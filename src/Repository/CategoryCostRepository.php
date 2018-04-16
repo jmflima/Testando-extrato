@@ -12,18 +12,13 @@ use SONFin\Models\CategoryCost;
 
 class CategoryCostRepository extends DefaultRepository implements CategoryCostRepositoryInterface
 {
-
-
-
-
-
-	public function __construct()
-	{
-		parent::__construct(CategoryCost::class);
-	}
+    public function __construct()
+    {
+        parent::__construct(CategoryCost::class);
+    }
 
     public function sumByPeriod(string $dateStart, string $dateEnd, int $userId): array
-    {Manager::
+    {
         $categories = CategoryCost::query()
             ->selectRaw('category_costs.name, sum(value) as value')
             ->leftJoin('bill_pays', 'bill_pays.category_cost_id', '=', 'category_costs.id')
@@ -35,5 +30,5 @@ class CategoryCostRepository extends DefaultRepository implements CategoryCostRe
             ->get();
         return $categories->toArray();
     }
-			
+            
 }
